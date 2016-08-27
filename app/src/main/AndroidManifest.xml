@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sinnplyblue.sblue">
+
+    <!-- Bluetooth setting -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+    <!-- Bluetooth Admin to discover devices -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <!-- Bluetooth LE Only -->
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--
+     ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.sinnplyblue.sblue.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.sinnplyblue.sblue.DeviceScanActivity"
+            android:label="@string/app_name">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter> -->
+        </activity>
+        <activity android:name="com.sinnplyblue.sblue.BLEActivity"/>
+        <service android:name="com.sinnplyblue.sblue.NLService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+                <action android:name="com.sinnplyblue.sblue.CLEAR_ALL" />
+                <action android:name="com.sinnplyblue.sblue.LIST_ALL" />
+            </intent-filter>
+        </service>
+        <service android:name="com.sinnplyblue.sblue.BLEService" android:enabled="true"/>
+    </application>
+
+</manifest>
